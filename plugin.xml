@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="com.ping++.fami" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>ping</name>
+    <js-module name="ping" src="www/ping.js">
+        <clobbers target="ping" />
+    </js-module>
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="ping">
+                <param name="ios-package" value="ping" />
+            </feature>
+        </config-file>
+        
+        <config-file target="*-Info.plist" parent="LSApplicationQueriesSchemes">
+            <array>
+                <string>weixin</string>
+                <string>wechat</string>
+                <string>alipay</string>
+            </array>
+        </config-file>
+        
+        
+        <source-file src="src/ios/ping.m" />
+        
+        <framework src="PassKit.framework" weak="true" />
+        <framework src="MobileCoreServices.framework" weak="true" />
+        <framework src="MessageUI.framework" weak="true" />
+        <framework src="MapKit.framework" weak="true" />
+        <framework src="ImageIO.framework" weak="true" />
+        <framework src="CoreGraphics.framework" weak="true" />
+        <framework src="CoreAudio.framework" weak="true" />
+        <framework src="AudioToolbox.framework" weak="true" />
+        <framework src="AddressBookUI.framework" weak="true" />
+        <framework src="AddressBook.framework" weak="true" />
+        <framework src="CoreTelephony.framework" weak="true" />
+        <framework src="QuartzCore.framework" weak="true" />
+        <framework src="Security.framework" weak="true" />
+        <framework src="SystemConfiguration.framework" weak="true" />
+        <framework src="CFNetwork.framework" weak="true" />
+
+
+        <resource-file src="src/ios/lib/Channels/Alipay/AlipaySDK.bundle" custom="true" />
+        <framework src="src/ios/lib/Channels/Alipay/AlipaySDK.framework" custom="true"/>
+        <source-file src="src/ios/lib/Channels/Alipay/libpingpp+alipay.a" framework="true" />
+        
+        <source-file src="src/ios/lib/Channels/ApplePay/libpingpp+applepay.a" framework="true" />
+        <header-file src="src/ios/lib/Channels/ApplePay/Pingpp+ApplePay.h"/>
+        
+        
+        <source-file src="src/ios/lib/Channels/Wx/libpingpp+wx.a" framework="true"/>
+        <source-file src="src/ios/lib/Channels/Wx/libWeChatSDK.a" framework="true"/>
+        <header-file src="src/ios/lib/Channels/Wx/WXApi.h" />
+        <header-file src="src/ios/lib/Channels/Wx/WXApiObject.h" />
+        <framework src="libsqlite3.0.tbd" />
+        <framework src="libc++.tbd" />
+        <framework src="libz.tbd" />
+
+        
+        <resource-file src="src/ios/lib/Pingpp.bundle"/>
+        <source-file src="src/ios/lib/libpingppcore.a" framework="true"/>
+        <header-file src="src/ios/lib/Pingpp.h"/>
+        <source-file src="src/ios/lib/Dependencies/Network/libpingpp+network.a" framework="true"/>
+        <header-file src="src/ios/lib/Dependencies/Network/PingppURLResponse.h"/>
+        
+    </platform>
+</plugin>
